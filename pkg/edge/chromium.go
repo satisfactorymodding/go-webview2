@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"log/slog"
 	"os"
 	"path/filepath"
 	"strings"
@@ -22,7 +23,7 @@ import (
 type Rect = w32.Rect
 
 func globalErrorHandler(err error) {
-	println("Error detected in Webview2:\n", err.Error())
+	slog.Error("error detected in Webview2", slog.Any("err", err))
 }
 
 type Chromium struct {
